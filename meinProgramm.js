@@ -5,18 +5,6 @@ let squares = [100, -10, 0, 0, -40, -10, -10, 5, 0, -10, -50, -10, 0, 0, -50, -1
 // --- Initialization with methods ---
 
 
-function bewegDich() {
-    let dice = 1 + Math.floor(6 * Math.random());
-    this.position = (this.position + dice) % squares.length;
-    this.cash += squares[this.position];
-    if (this.cash < 0) {
-        console.log(`Game over for ${this.name}.`);
-    }
-}
-
-const zeigeErgebnis = function () {
-    console.log(`${this.name} is at position ${this.position} and has ${this.cash}€`);
-}
 
 let player1 = {
     name: 'Joaquim',
@@ -44,6 +32,20 @@ let player3 = {
     move: bewegDich,
     displayInfo:zeigeErgebnis
 }
+
+function bewegDich() {
+    let dice = 1 + Math.floor(6 * Math.random());
+    this.position = (this.position + dice) % squares.length;
+    this.cash += squares[this.position];
+    if (this.cash < 0) {
+        console.log(`Game over for ${this.name}.`);
+    }
+}
+
+function zeigeErgebnis() {
+    console.log(`${this.name} is at position ${this.position} and has ${this.cash}€`);
+}
+
 
 // --- Turn 1  ---
 player1.move();
